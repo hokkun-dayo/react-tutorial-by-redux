@@ -23,7 +23,9 @@ def comments_handler():
         comments = json.loads(f.read())
 
     if request.method == 'POST':
-        new_comment = request.form.to_dict()
+        print(request.data)
+        # new_comment = request.form.to_dict()
+        new_comment = request.get_json()
         new_comment['id'] = int(time.time() * 1000)
         comments.append(new_comment)
 
